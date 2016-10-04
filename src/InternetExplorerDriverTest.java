@@ -8,7 +8,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 public class InternetExplorerDriverTest {
     public String InternetExplorerSession() {
         System.setProperty("webdriver.ie.driver", "WebDrivers\\IEDriverServer.exe");
-        WebDriver driver = new EdgeDriver();
+        WebDriver driver = new InternetExplorerDriver();
         driver.close();
         System.out.print("InternetExplorer execution - ");
         return "Pass";
