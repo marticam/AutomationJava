@@ -1,3 +1,5 @@
+import com.sun.javafx.geom.Edge;
+
 /**
  * Created by cmartinez on 10/3/2016.
  */
@@ -12,5 +14,8 @@ public class Browserinvocation {
 
         InternetExplorerDriverTest test2 = new InternetExplorerDriverTest();
         System.out.println(test2.InternetExplorerSession());
+
+        EdgeDriverTest test3 = new EdgeDriverTest();
+        System.out.println(test3.EdgeSession());
     }
 }
