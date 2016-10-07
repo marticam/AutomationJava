@@ -1,3 +1,4 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -7,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class FireFoxDriverTest {
     public String FireFoxSession() {
         System.setProperty("webdriver.gecko.driver", "WebDrivers\\geckodriver.exe");
-        WebDriver driver = new org.openqa.selenium.chrome.ChromeDriver();
+        WebDriver driver = new FirefoxDriver();
         driver.close();
         System.out.print("FireFox execution - ");
         return "Pass";
