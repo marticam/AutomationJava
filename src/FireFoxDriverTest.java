@@ -11,6 +11,7 @@ public class FireFoxDriverTest {
         WebDriver driver = new FirefoxDriver();
         driver.close();
         System.out.print("FireFox execution - ");
+
         return "Pass";
     }
 }
