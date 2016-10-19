@@ -1,9 +1,14 @@
 import com.sun.jna.Structure;
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 import jdk.internal.org.objectweb.asm.tree.analysis.Value;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 /**
@@ -64,10 +69,70 @@ public class ChromeDriverTest {
 //            }
 //        }
 //        Test # 4 - Close / accept / JS alerts
-        driver.get("http://www.tizag.com/javascriptT/javascriptalert.php");
-        driver.findElement(By.cssSelector("input[value='Confirmation Alert']")).click();
-        driver.switchTo().alert().accept(); // OK YES DONE
+//        driver.get("http://www.tizag.com/javascriptT/javascriptalert.php");
+//        driver.findElement(By.cssSelector("input[value='Confirmation Alert']")).click();
+//        driver.switchTo().alert().accept(); // OK YES DONE
 //        driver.switchTo().alert().dismiss(); // OK YES DONE
+
+
+//        Test # 5
+//        driver.get("https://www.makemytrip.com/flights");
+//        System.out.println("Is displayed");
+//        System.out.println(driver.findElement(By.id("return_date_sec")).isDisplayed());
+//        Assert.assertTrue(driver.findElement(By.id("return_date_sec")).isDisplayed());
+//        driver.findElement(By.id("multi_city_button")).click();
+//        System.out.println("Is NOT displayed");
+//        Assert.assertFalse(driver.findElement(By.id("return_date_sec")).isDisplayed());
+//        driver.findElement(By.id("one_way_button1")).click();
+//        System.out.println("Is displayed");
+//        Assert.assertTrue(driver.findElement(By.id("return_date_sec")).isDisplayed());
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+//        driver.get("http://www.makemytrip.com/");
+//        System.out.println(" Before clikcing on Multi city Radio button");
+//        System.out.println(driver.findElement(By.xpath(".//*[@id='return_date_sec']")).isDisplayed());
+//        //driver.findElement(By.xpath(".//*[@id='multi_city_button']/span")).click();
+////driver.findElement(By.xpath(".//*[@id='multi_city_button']/span")).isEnabled();
+//        System.out.println(" After clikcing on Multi city Radio button");
+//        driver.findElement(By.xpath(".//*[@id='start_date_sec']/span[3]")).click();
+//        driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div[2]/table/tbody/tr[5]/td[3]/a")).click();
+//        int i = 0;
+//        while (i < 5) {
+//            driver.findElement(By.xpath(".//*[@id='adult_count']/a[2]")).click();
+//            i++;
+//        }
+////System.out.println(driver.findElement(By.xpath(".//*[@id='return_date_sec']")).isDisplayed());
+////System.out.println(driver.findElement(By.xpath(".//*[@id='mui_city_button']/span")).isDisplayed());
+//        try {
+//            Thread.sleep(3000L);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+////System.out.println(driver.findElement(By.xpath(".//*[@id='responsive_bottom']/div[2]/div[1]/div/div/h3")).getText());
+////If you want to validate the object which is present in web page or code base
+//        int count = driver.findElements(By.xpath(".//*[@id='mui_city_button']/span")).size();
+//        if (count == 0) {
+//            System.out.println("verified");
+//        }
+
+//        TEST # 6 - Using actions of the webdriver
+        driver.get("https://www.amazon.com/");
+        Actions actionone = new Actions(driver);
+       // WebElement element = driver.findElement(By.id("nav-link-yourAccount"));
+       // actionone.moveToElement(element).build().perform();
+        WebElement element1 = driver.findElement((By.id("twotabsearchtextbox")));
+        //actionone.keyDown(Keys.SHIFT).moveToElement(element1).click().sendKeys("tomela").build().perform();
+        actionone.keyDown(Keys.SHIFT).sendKeys(element1 , "sdsfsdf").build().perform();
+        //element1.sendKeys("tomela");
+        //element1.sendKeys("tavo");
+       // actionone.contextClick(element1).build().perform();
+
+
+//
         System.out.print("Chrome execution - ");
         return "Pass";
     }
