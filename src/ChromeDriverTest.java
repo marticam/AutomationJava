@@ -11,6 +11,9 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.Iterator;
+import java.util.Set;
+
 /**
  * Created by cmartinez on 10/3/2016.
  */
@@ -120,19 +123,50 @@ public class ChromeDriverTest {
 //        }
 
 //        TEST # 6 - Using actions of the webdriver
-        driver.get("https://www.amazon.com/");
-        Actions actionone = new Actions(driver);
+//        driver.get("https://www.amazon.com/");
+//        Actions actionone = new Actions(driver);
        // WebElement element = driver.findElement(By.id("nav-link-yourAccount"));
        // actionone.moveToElement(element).build().perform();
-        WebElement element1 = driver.findElement((By.id("twotabsearchtextbox")));
+//        WebElement element1 = driver.findElement((By.id("twotabsearchtextbox")));
         //actionone.keyDown(Keys.SHIFT).moveToElement(element1).click().sendKeys("tomela").build().perform();
-        actionone.keyDown(Keys.SHIFT).sendKeys(element1 , "sdsfsdf").build().perform();
+//        actionone.keyDown(Keys.SHIFT).sendKeys(element1 , "sdsfsdf").build().perform();
         //element1.sendKeys("tomela");
         //element1.sendKeys("tavo");
        // actionone.contextClick(element1).build().perform();
 
+//        Test # 7 handle multiple windows
+        driver.get("https://www.google.com/gmail/about/");
+        //driver.findElement(By.(".gmail-nav__nav-link.gmail-nav__nav-link__create-account"));
+        //driver.findElement(new By.ByLinkText("Get Gmail")).click();
+        //driver.findElement(new By.ByXPath("html/body/nav/div/a[3]")).click();
+        driver.findElement(By.cssSelector(".gmail-nav__nav-link.gmail-nav__nav-link__create-account")).click();
+        System.out.println("Before switching");
+        System.out.println(driver.getTitle());
+        Set<String>ids = driver.getWindowHandles();
+        Iterator<String> it = ids.iterator();
+        String parentid = it.next();
+        String childid = it.next();
+        System.out.println("After switching");
+        driver.switchTo().window(childid);
+        System.out.println(driver.getTitle());
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.close();
+        System.out.println("Switching back to Parent");
+        driver.switchTo().window(parentid);
+        System.out.println(driver.getTitle());
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.close();
 
-//
+
+
         System.out.print("Chrome execution - ");
         return "Pass";
     }
