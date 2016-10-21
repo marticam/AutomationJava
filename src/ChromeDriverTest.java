@@ -77,7 +77,7 @@ public class ChromeDriverTest {
         driver.switchTo().alert().accept(); // OK YES DONE
         driver.switchTo().alert().dismiss(); // OK YES DONE*/
 
-        /*---------Test # 6 Using the IsDisplyed | IsEnabled ----------------*/
+        /*---------Test # 6 Using the IsDisplayed | IsEnabled ----------------*/
         /*driver.get("https://www.makemytrip.com/flights");
         System.out.println("Is displayed");
         System.out.println(driver.findElement(By.id("return_date_sec")).isDisplayed());
@@ -94,7 +94,8 @@ public class ChromeDriverTest {
             e.printStackTrace();
         }*/
 
-        driver.get("http://www.makemytrip.com/");
+        /*---------Example of the Trainer Related to the Using the IsDisplayed | IsEnabled ----------------------*/
+        /*driver.get("http://www.makemytrip.com/");
         System.out.println(" Before clikcing on Multi city Radio button");
         System.out.println(driver.findElement(By.xpath(".//*[@id='return_date_sec']")).isDisplayed());
         //driver.findElement(By.xpath(".//*[@id='multi_city_button']/span")).click();
@@ -119,21 +120,21 @@ public class ChromeDriverTest {
         int count = driver.findElements(By.xpath(".//*[@id='mui_city_button']/span")).size();
         if (count == 0) {
             System.out.println("verified");
-        }
+        }*/
 
-//        TEST # 7 - Using actions of the webdriver
-//        driver.get("https://www.amazon.com/");
-//        Actions actionone = new Actions(driver);
-       // WebElement element = driver.findElement(By.id("nav-link-yourAccount"));
-       // actionone.moveToElement(element).build().perform();
-//        WebElement element1 = driver.findElement((By.id("twotabsearchtextbox")));
-        //actionone.keyDown(Keys.SHIFT).moveToElement(element1).click().sendKeys("tomela").build().perform();
-//        actionone.keyDown(Keys.SHIFT).sendKeys(element1 , "sdsfsdf").build().perform();
-        //element1.sendKeys("tomela");
-        //element1.sendKeys("tavo");
-       // actionone.contextClick(element1).build().perform();
+        /*---------TEST # 7 - Using actions of the webdriver--------------------*/
+        /*driver.get("https://www.amazon.com/");
+        Actions actionone = new Actions(driver);
+        WebElement element = driver.findElement(By.id("nav-link-yourAccount"));
+        actionone.moveToElement(element).build().perform();
+        WebElement element1 = driver.findElement((By.id("twotabsearchtextbox")));
+        actionone.keyDown(Keys.SHIFT).moveToElement(element1).click().sendKeys("tomela").build().perform();
+        actionone.keyDown(Keys.SHIFT).sendKeys(element1, "sdsfsdf").build().perform();
+        element1.sendKeys("tomela");
+        element1.sendKeys("tavo");
+        actionone.contextClick(element1).build().perform();*/
 
-//        Test # 8 handle multiple windows
+        /*---------Test # 8 handle multiple windows-----------------------------*/
         driver.get("https://www.google.com/gmail/about/");
         //driver.findElement(By.(".gmail-nav__nav-link.gmail-nav__nav-link__create-account"));
         //driver.findElement(new By.ByLinkText("Get Gmail")).click();
@@ -141,7 +142,7 @@ public class ChromeDriverTest {
         driver.findElement(By.cssSelector(".gmail-nav__nav-link.gmail-nav__nav-link__create-account")).click();
         System.out.println("Before switching");
         System.out.println(driver.getTitle());
-        Set<String>ids = driver.getWindowHandles();
+        Set<String> ids = driver.getWindowHandles();
         Iterator<String> it = ids.iterator();
         String parentid = it.next();
         String childid = it.next();
