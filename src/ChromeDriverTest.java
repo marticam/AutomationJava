@@ -1,11 +1,9 @@
 import com.sun.jna.Structure;
+import com.sun.jna.platform.win32.WinDef;
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -135,7 +133,7 @@ public class ChromeDriverTest {
         actionone.contextClick(element1).build().perform();*/
 
         /*---------Test # 8 handle multiple windows-----------------------------*/
-        driver.get("https://www.google.com/gmail/about/");
+        /*driver.get("https://www.google.com/gmail/about/");
         //driver.findElement(By.(".gmail-nav__nav-link.gmail-nav__nav-link__create-account"));
         //driver.findElement(new By.ByLinkText("Get Gmail")).click();
         //driver.findElement(new By.ByXPath("html/body/nav/div/a[3]")).click();
@@ -163,11 +161,82 @@ public class ChromeDriverTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        driver.close();
+        driver.close();*/
 
+        /*---------Test # 9 handle Frames -----------------------------*/
+        /*driver.get("https://netbanking.hdfcbank.com/netbanking/");
+        //System.out.println(driver.getPageSource());
+        driver.switchTo().frame(0);
+        driver.findElement(By.cssSelector("input[class='input_password']")).sendKeys("10000");*/
+
+        /*---------Test # 10 Extract ALL the links in the web page || Footer || Header || ALL Links || Dynamic links ------------------*/
+        /*driver.get("http://www.ebay.com/");
+        System.out.println("Whole Quantity of items in the page");
+        System.out.println(driver.findElements(By.tagName("a")).size());
+        System.out.println("Quantity of items in the footer");
+        WebElement footer = driver.findElement(By.id("glbfooter"));
+        System.out.println(footer.findElements(By.tagName("a")).size());
+        System.out.println("Quantity of items of a section of the footer");
+        WebElement subsectionoffooter = driver.findElement(By.xpath(".//*[@id='gf-BIG']/table/tbody/tr/td[1]"));
+        System.out.println(subsectionoffooter.findElements(By.tagName("a")).size());
+        //int piece1 = driver.findElements(By.id("gf-BIG")).size();
+        //System.out.println(piece1);
+        System.out.println("Quantity of items and names for the 2dn column");
+        WebElement columntwo = driver.findElement(By.xpath(".//*[@id='gf-BIG']/table/tbody/tr/td[2]/ul"));
+        System.out.println("Con Variables");
+        int count = columntwo.findElements(By.tagName("a")).size();
+        System.out.println(count);
+        System.out.println("Sin Variables");
+        System.out.println(columntwo.findElements(By.tagName("a")).size());
+        String TitleBeforeClicking = driver.getTitle();
+        System.out.println(driver.getTitle());
+        for (int i=1;i<count;i++ ){
+            //Print all the options in the column
+            //System.out.println(columntwo.findElements(By.tagName("a")).get(i).getText());
+            if (columntwo.findElements(By.tagName("a")).get(i).getText().contains("Mapa del sitio")){
+                columntwo.findElements(By.tagName("a")).get(i).click();
+            }
+            //columntwo.findElement(By.linkText("Mapa del sitio")).click();
+        }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(driver.getTitle());
+        String TitleAfterClicking = driver.getTitle();
+
+        if (TitleBeforeClicking != TitleAfterClicking){
+            //System.out.println(TitleBeforeClicking);
+            //System.out.println(TitleAfterClicking);
+            //System.out.println(driver.findElement(new By.ByCssSelector(".nav>h1")).isDisplayed());
+            //System.out.println(driver.findElement(new By.ByCssSelector(".nav>h1")).getText());
+            Boolean abc = driver.findElement(new By.ByCssSelector(".nav>h1")).isDisplayed();
+            if (abc == true)
+                System.out.println("Pass");
+        }
+        else{
+            System.out.println("Fail");
+        }*/
+
+        /*---------Test # 10 - Implicit vs Explicit waits ----------------*/
+        /*Explanation: http://stackoverflow.com/questions/22656615/what-is-difference-between-implicit-wait-vs-explicit-wait-in-selenium-webdriver*/
+        driver.get("https://www.udemy.com/");
+        driver.findElement(new By.ByLinkText("Login")).click();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //driver.switchTo().frame(0);
+        driver.findElement(By.cssSelector("#id_email")).sendKeys("10000");
+        //System.out.println(driver.getPageSource());
+        //driver.findElement(By.id("id_email")).sendKeys("juan");
 
         /*-----------Browser Where it was executed---------*/
         System.out.print("Chrome execution - ");
         return "Pass";
     }
+
+    
 }
